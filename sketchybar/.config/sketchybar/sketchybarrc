@@ -6,16 +6,25 @@ source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
+# aerospace setting
+AEROSPACE_FOCUSED_MONITOR_NO=$(aerospace list-workspaces --focused)
+AEROSPACE_LIST_OF_WINDOWS_IN_FOCUSED_MONITOR=$(aerospace list-windows --workspace $AEROSPACE_FOCUSED_MONITOR_NO | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+
+# Unload the macOS on screen indicator overlay for volume change
+launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+
 
 # Settings for bar apperence 
 bar=( 
   height=35       
   blur_radius=30  
-  position=top    
-  sticky=off      
-  padding_left=10 
-  padding_right=10
   color=$BAR_COLOR
+  shadow=off
+  position=top
+  sticky=on
+  padding_right=10
+  padding_left=10
+  notch_width=0
 )
 
 sketchybar --bar "${bar[@]}"
@@ -40,9 +49,7 @@ default=(
 sketchybar --default "${default[@]}"
 
 # -- Left Side Items --
-# source $ITEM_DIR/spaces.sh
-# source $ITEM_DIR/front_app.sh
-source $ITEM_DIR/aerospace.sh
+source $ITEM_DIR/spaces.sh
 
 # --- Right Side Items ---
 source $ITEM_DIR/calendar.sh

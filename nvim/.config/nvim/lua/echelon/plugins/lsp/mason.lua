@@ -8,10 +8,7 @@ return {
     config = function()
       -- import mason
       local mason = require("mason")
-
-      -- import mason-lspconfig
       local mason_lspconfig = require("mason-lspconfig")
-
       local mason_tool_installer = require("mason-tool-installer")
 
       -- enable mason and configure icons
@@ -31,13 +28,10 @@ return {
           "ts_ls",
           "html",
           "cssls",
-          "tailwindcss",
           "lua_ls",
           "prismals",
           "pyright",
           "eslint",
-          "jdtls",
-          "cssmodules_ls",
           "intelephense",
         },
         automatic_installation = true,
@@ -51,8 +45,6 @@ return {
           "black",    -- python formatter
           "pylint",
           "eslint_d",
-          "java-debug-adapter",
-          "java-test",
         },
       })
     end,

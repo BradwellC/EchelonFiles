@@ -1,6 +1,16 @@
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
+  keys = {
+    {
+      '<leader>fb',
+      function()
+        require('conform').format { async = true, lsp_format = 'fallback' }
+      end,
+      mode = '',
+      desc = '[F]ormat [B]uffer',
+    },
+  },
   config = function()
     local conform = require("conform")
 
@@ -26,13 +36,6 @@ return {
         timeout_ms = 500,
         lsp_format = "fallback",
       },
-      vim.keymap.set('n', '<leader>Ff', function()
-        conform.format({
-          lsp_fallback = true,
-          async = false,
-          timeout_ms = 1000,
-        })
-      end, { desc = "[F]ormat [F]ile" })
     })
   end
 }

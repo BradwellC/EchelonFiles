@@ -21,7 +21,7 @@ return {
       end
     })
 
-    vim.keymap.set('n', '<leader>Lf', function()
+    vim.keymap.set('n', '<leader>lf', function()
       lint.try_link()
     end, { desc = "[L]int [F]ile" })
   end

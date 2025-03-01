@@ -9,9 +9,11 @@ if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
                          background.color=$RED \
                          label.color=$BAR_COLOR \
                          icon.color=$BAR_COLOR
-    sketchybar --set $NAME background.drawing=on
 else
   sketchybar --set $NAME background.drawing=off \
                          label.color=$RED \
                          icon.color=$RED
 fi
+
+
+
