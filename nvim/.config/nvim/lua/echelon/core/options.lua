@@ -10,9 +10,12 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
 -- Setting column numbers
 opt.number = true
-opt.relativenumber = true 
+opt.relativenumber = true
 
 opt.showmode = false
 opt.mouse = "a"
@@ -61,7 +64,6 @@ opt.cursorline = true
 opt.scrolloff = 10
 
 opt.numberwidth = 2
-opt.wrap = true
 
 opt.tabstop = 2
 opt.expandtab = true

@@ -9,7 +9,7 @@ return {
 
   config = function()
     local lspconfig = require("lspconfig")
-    local servers = { "lua_ls", "ts_ls", "eslint", "pyright", "html", "bashls", "cssls", "intelephense" }
+    local servers = { "lua_ls", "ts_ls", "eslint", "pyright", "html", "cssls", "intelephense", "gopls", "sqlls" }
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 

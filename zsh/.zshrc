@@ -13,9 +13,14 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # NPM & Nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 
 # antigen path when using Homebrew:
 source $(brew --prefix)/share/antigen/antigen.zsh
@@ -109,7 +114,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)" 
-  # eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/sonicboom_dark.omp.json')"
+  # eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/kushal.omp.json')"
 fi
 
 # export PATH="$HOME/.rbenv/bin:$PATH"
@@ -117,9 +122,12 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 # export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/Users/falconechelon/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/Users/falconechelon/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+export PATH=$PATH:$GOPATH/bin
+
+

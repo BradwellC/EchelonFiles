@@ -6,8 +6,7 @@ after-login-command = []
 
 after-startup-command = ['exec-and-forget sketchybar']
 
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
 ]
 
 start-at-login = true 
@@ -21,13 +20,13 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 [gaps]
 inner.horizontal = 10
 inner.vertical =   10
-outer.left =       0
-outer.bottom =     0
+outer.left =       10
+outer.bottom =     10
 outer.top =        [
-  { monitor."built-in" = 20 },
-  50
+  { monitor."built-in" = 30 },
+  60
 ]
-outer.right =      0
+outer.right =      10
 
 [mode.main.binding]
 
@@ -45,15 +44,20 @@ alt-shift-l = 'move right'
 ctrl-h = 'split horizontal'
 ctrl-v = 'split vertical'
 
-alt-f = 'fullscreen'
+ctrl-alt-f = 'fullscreen'
 alt-shift-space = 'layout floating tiling'
 
 
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
+alt-4 = 'workspace 4'
 alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 alt-b = 'workspace B' # Browser  
+alt-c = 'workspace C' #   
+alt-d = 'workspace D' # Docker  
 alt-e = 'workspace E' # Elgato 
+alt-f = 'workspace F' # Figma
+alt-g = 'workspace G'
 alt-m = 'workspace M' # Mail  
 alt-n = 'workspace N' # Obsidian  
 alt-o = 'workspace O' # OBS 
@@ -66,9 +70,14 @@ alt-z = 'workspace Z' # System Settings / Finder / Messages / Activity Monitor
 
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-a = 'move-node-to-workspace A'
 alt-shift-b = 'move-node-to-workspace B'
+alt-shift-c = 'move-node-to-workspace C' #   
+alt-shift-d = 'move-node-to-workspace D' # Docker  
 alt-shift-e = 'move-node-to-workspace E'
+alt-shift-f = 'move-node-to-workspace F'
+alt-shift-g = 'move-node-to-workspace G'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-n = 'move-node-to-workspace N'
 alt-shift-o = 'move-node-to-workspace O'
@@ -94,64 +103,12 @@ alt-shift-r = 'reload-config'
 [mode.service.binding]
 
 [[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = "move-node-to-workspace S"
-
-[[on-window-detected]]
-if.app-id = 'com.bitwarden.desktop'
-run = ['layout floating', 'move-node-to-workspace Z']
-
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run = "move-node-to-workspace T"
-
-[[on-window-detected]]
 if.app-id = 'com.microsoft.edgemac'
 run = "move-node-to-workspace B"
 
 [[on-window-detected]]
-if.app-id = 'com.apple.mail'
-run = "move-node-to-workspace m"
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iCal'
-run = "move-node-to-workspace m"
-
-[[on-window-detected]]
-if.app-id = 'com.nordvpn.macos'
-run = "move-node-to-workspace V"
-
-[[on-window-detected]]
-if.app-id = 'com.obsproject.obs-studio'
-run = "move-node-to-workspace O"
-
-[[on-window-detected]]
-if.app-id = 'com.todoist.mac.todoist'
-run = "move-node-to-workspace P"
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iWork.Pages'
-run = "move-node-to-workspace W"
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iWork.Numbers'
-run = "move-node-to-workspace W"
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iWork.Keynote'
-run = "move-node-to-workspace W"
-
-[[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-run = ['layout floating', 'move-node-to-workspace Z']  # The callback itself
-
-[[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = ['layout floating', 'move-node-to-workspace Z']  # The callback itself
-
-[[on-window-detected]]
-if.app-id = 'com.todoist.mac.todoist'
-run = "move-node-to-workspace P"
+if.app-id = 'com.electron.dockerdesktop'
+run = 'move-node-to-workspace D'
 
 [[on-window-detected]]
 if.app-id = 'com.elgato.WaveLink'
@@ -166,21 +123,90 @@ if.app-id = 'com.elgato.CameraHub'
 run = ['layout floating', 'move-node-to-workspace E']
 
 [[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = 'move-node-to-workspace F'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+run = "move-node-to-workspace M"
+
+[[on-window-detected]]
 if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace N'
 
-[workspace-to-monitor-force-assignment]
-  B = 1
-  V = 1
-  P = 1
-  E = 1 
-  T = 'main'
-  1 = 'main'
-  2 = 'main'
-  Z = 'main'
-  W = '^built-in retina display$'
-  S = '^built-in retina display$'
-  O = '^built-in retina display$'
-  N = '^built-in retina display$'
- 
+[[on-window-detected]]
+if.app-id = 'com.obsproject.obs-studio'
+run = "move-node-to-workspace O"
 
+[[on-window-detected]]
+if.app-id = 'com.todoist.mac.Todoist'
+run = "move-node-to-workspace P"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = "move-node-to-workspace S"
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = "move-node-to-workspace T"
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Word'
+run = "move-node-to-workspace W"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.microsoft.Powerpoint'
+run = "move-node-to-workspace W"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.microsoft.Excel'
+run = "move-node-to-workspace W"
+
+[[on-window-detected]]
+if.app-id = 'com.nordvpn.macos'
+run = "move-node-to-workspace V"
+
+[[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = ['layout floating', 'move-node-to-workspace Z']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = ['layout floating', 'move-node-to-workspace Z']  # The callback itself
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ['layout floating', 'move-node-to-workspace Z']  # The callback itself
+
+[[on-window-detected]]
+if.app-id = 'net.freemacsoft.Appcleaner'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.yanex.marta'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'layout floating'
+
+[workspace-to-monitor-force-assignment]
+  1 = 1 
+  A = 1  
+  B = 1
+  E = 1 
+  F = 1
+  V = 1
+  W = 2 
+  T = 2
+  2 = 2
+  N = 2  
+  P = 2 
+  4 = 3  
+  C = 3
+  D = 3
+  G = 3
+  M = 3
+  O = 3 
+  S = 3  
+  Z = 3 

@@ -33,6 +33,7 @@ return {
           "pyright",
           "eslint",
           "intelephense",
+          "gopls",
         },
         automatic_installation = true,
       })

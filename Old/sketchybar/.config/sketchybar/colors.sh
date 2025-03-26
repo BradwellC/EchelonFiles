@@ -9,6 +9,7 @@ export GREEN=0xffa6da95
 export YELLOW=0xffeed49f
 export WHITE=0xffb8c0e0
 export ORANGE=0xfff5a97f
+export PINK=0xfff5bde6
 
 # -- Teal Scheme --
 export BAR_COLOR=0xff24273a
