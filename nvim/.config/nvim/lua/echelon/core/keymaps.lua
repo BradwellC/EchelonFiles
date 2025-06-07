@@ -28,6 +28,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- TIP: Disable arrow keys in normal mode
+-- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+-- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+-- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+-- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
 -- Easly Split Window
 keymap.set('n', '<leader>wv', '<C-w>v', { desc = "Split [W]orkspace [V]ertically" })
 keymap.set('n', '<leader>wh', '<C-w>s', { desc = "Split [W]orkspace [H]orizontally" })

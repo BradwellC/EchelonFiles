@@ -40,7 +40,6 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 # antigen bundle git-flow
 # antigen bundle npm
 # antigen bundle web-search
-# antigen bundle z
 # antigen bundle zsh-users/zsh-autosuggestions
 # antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
@@ -107,6 +106,17 @@ alias desktop='cd ~/Desktop'
 alias home='cd ~/'
 alias development='cd ~/Echelon/Development'
 alias config='cd ~/.config'
+
+alias gd='git diff'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gu='git pull'
+alias gl='git log'
+alias gb='git branch'
+alias gi='git init'
+alias gcl='git clone'
+
 
 # Shell Integration
 eval "$(fzf --zsh)"

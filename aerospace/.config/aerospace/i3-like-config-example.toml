@@ -1,8 +1,9 @@
   after-login-command = []
 
-  after-startup-command = []
+  after-startup-command = ['exec-and-forget sketchybar']
 
-  exec-on-workspace-change = []
+  exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+  ]
 
   start-at-login = true 
 
@@ -17,12 +18,26 @@
   outer.left =       10
   outer.bottom =     10
   outer.top =        [
-    { monitor."built-in" = 20 },
-    15
+    { monitor."built-in" = 25 },
+    55
   ]
   outer.right =      10
 
 [mode.main.binding]
+    # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
+    alt-enter = '''exec-and-forget osascript -e '
+    tell application "Terminal"
+        do script
+        activate
+    end tell'
+    '''
+    
+  alt-enter = '''exec-and-forget osascript -e '
+    tell application "Safari"
+        do script
+        activate
+    end tell'
+    '''
 
     # i3 wraps focus by default
     alt-h =         'focus --boundaries-action wrap-around-the-workspace left'
@@ -35,14 +50,30 @@
     alt-shift-k = 'move up'
     alt-shift-l = 'move right'
 
+    # Consider using 'join-with' command as a 'split' replacement if you want to enable
+    # normalizations
+    alt-sh = 'split horizontal'
+    alt-sv = 'split vertical'
+
+    alt-f = 'fullscreen'
+
+    alt-s = 'layout v_accordion' # 'layout stacking' in i3
+    alt-w = 'layout h_accordion' # 'layout tabbed' in i3
+    alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
     alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-4 = 'workspace 4'
     alt-5 = 'workspace 5'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+    alt-9 = 'workspace 9'
+    alt-0 = 'workspace 10'
 
-    alt-a = 'workspace A' # Affinity Programs
+    alt-a = 'workspace A' # System
     alt-b = 'workspace B' # Browser
     alt-c = 'workspace C' # Calendar
     alt-d = 'workspace D' # Docker
@@ -57,14 +88,19 @@
     alt-t = 'workspace T' # Terminal
     alt-v = 'workspace V' # DaVinci Resolve
     alt-w = 'workspace W' # Windows Docs
-    alt-z = 'workspace Z' # System Files
 
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
+    alt-shift-3 = 'move-node-to-workspace 3'
     alt-shift-4 = 'move-node-to-workspace 4'
     alt-shift-5 = 'move-node-to-workspace 5'
+    alt-shift-6 = 'move-node-to-workspace 6'
+    alt-shift-7 = 'move-node-to-workspace 7'
+    alt-shift-8 = 'move-node-to-workspace 8'
+    alt-shift-9 = 'move-node-to-workspace 9'
+    alt-shift-0 = 'move-node-to-workspace 10'
 
-    alt-shift-a = 'workspace A' # Affinity Programs
+    alt-shift-a = 'workspace A' # System
     alt-shift-b = 'workspace B' # Browser
     alt-shift-c = 'workspace C' # Calendar
     alt-shift-d = 'workspace D' # Docker
@@ -79,9 +115,8 @@
     alt-shift-t = 'workspace T' # Terminal
     alt-shift-v = 'workspace V' # DaVinci Resolve
     alt-shift-w = 'workspace W' # Windows Docs
-    alt-shift-z = 'workspace Z' # System Files
     
-    alt-shift-r = 'reload-config'
+    alt-shift-c = 'reload-config'
 
     alt-r = 'mode resize'
 
@@ -93,16 +128,30 @@
     enter = 'mode main'
     esc = 'mode main'
 
-# Workspace A - Affinity Programs
+  # -----------------------------------------------
+
+# Workspace A - System
 [[on-window-detected]]
-  if.app-id = 'com.seriflabs.affinitydesigner2'
+  if.app-id = 'com.bitwarden.desktop'
   run = ['layout floating', 'move-node-to-workspace A']
 
 [[on-window-detected]]
-  if.app-id = 'com.seriflabs.affinityphoto2'
+  if.app-id = 'com.apple.systempreference'
   run = ['layout floating', 'move-node-to-workspace A']
 
-# Workspace B - Browser
+[[on-window-detected]]
+  if.app-id = 'com.apple.Finder'
+  run = ['layout floating', 'move-node-to-workspace A']
+
+[[on-window-detected]]
+  if.app-id = 'org.yanex.marta'
+  run = ['layout floating', 'move-node-to-workspace A']
+
+[[on-window-detected]]
+  if.app-id = 'com.nordvpn.macos'
+  run = ['layout floating', 'move-node-to-workspace A']
+
+# Workspace B - Edge Browser
 [[on-window-detected]]
   if.app-id = 'com.microsoft.edgemac'
   run = 'move-node-to-workspace B'
@@ -112,14 +161,10 @@
   if.app-id = 'com.apple.iCal'
   run = 'move-node-to-workspace C'
 
-[[on-window-detected]]
-  if.app-id = 'com.flexibits.fantastical2.mac'
-  run = 'move-node-to-workspace C'
-
 # Workspace D - Docker
 [[on-window-detected]]
-if.app-id = 'com.electron.dockerdesktop'
-run = 'move-node-to-workspace D'
+  if.app-id = 'com.electron.dockerdesktop'
+  run = 'move-node-to-workspace D'
 
 # Workspace E - Elgato Programs
 [[on-window-detected]]
@@ -164,10 +209,6 @@ run = ['layout floating', 'move-node-to-workspace E']
   if.app-id = 'com.apple.reminders'
   run = 'move-node-to-workspace P'
 
-[[on-window-detected]]
-  if.app-id = 'com.todoist.mac.Todoist'
-  run = 'move-node-to-workspace P'
-
 # Workspace S - Safari
 [[on-window-detected]]
   if.app-id = 'com.apple.Safari'
@@ -196,27 +237,6 @@ run = ['layout floating', 'move-node-to-workspace E']
   if.app-id = 'com.blackmagic-design.DaVinciResolve'
   run = 'move-node-to-workspace V'
 
-  # Workspace Z - System
-[[on-window-detected]]
-  if.app-id = 'com.bitwarden.desktop'
-  run = ['layout floating', 'move-node-to-workspace Z']
-
-[[on-window-detected]]
-  if.app-id = 'com.apple.systempreference'
-  run = ['layout floating', 'move-node-to-workspace Z']
-
-[[on-window-detected]]
-  if.app-id = 'com.apple.finder'
-  run = ['layout floating', 'move-node-to-workspace Z']
-
-[[on-window-detected]]
-  if.app-id = 'org.yanex.marta'
-  run = ['layout floating', 'move-node-to-workspace Z']
-
-[[on-window-detected]]
-  if.app-id = 'com.nordvpn.macos'
-  run = ['layout floating', 'move-node-to-workspace Z']
-
 # No Workspace 
 [[on-window-detected]]
   if.app-id = 'net.freemacsoft.Appcleaner'
@@ -231,23 +251,24 @@ run = ['layout floating', 'move-node-to-workspace E']
   run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
-  A = 1
+# First Screen
+  B = 1
   D = 1
-  T = 1
-  N = 1
-  1 = 1
-  2 = 1
+  F = 1
+  M = 1
+  V = 1
 
-  B = 2
+# Second Screen
+  A = 2
   C = 2
+  D = 2
+  E = 2
   G = 2
-  M = 2
-  W = 2
-  4 = 2
+  O = 2
+  S = 2
 
-  E = 3
-  F = 3
-  O = 3
-  P = 3
-  S = 3
-  Z = 3
+# Third Screen
+  N = 3
+  T = 3
+  W = 3
+
