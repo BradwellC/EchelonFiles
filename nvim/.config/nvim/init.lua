@@ -1,2 +1,2 @@
-require("echelon.core")
-require("echelon.lazy")
+require("Echelon.core")
+require("Echelon.lazy")

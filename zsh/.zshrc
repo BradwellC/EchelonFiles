@@ -21,36 +21,31 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-
 # antigen path when using Homebrew:
 source $(brew --prefix)/share/antigen/antigen.zsh
 
-# if you installed antigen using curl:
-# source /path-to-antigen/antigen.zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-# antigen bundle git
-# antigen bundle heroku
-# antigen bundle pip
-# antigen bundle lein
-# antigen bundle command-not-found
-# antigen bundle common-aliases
-# antigen bundle compleat
-# antigen bundle git-extras
-# antigen bundle git-flow
-# antigen bundle npm
-# antigen bundle web-search
-# antigen bundle zsh-users/zsh-autosuggestions
-# antigen bundle zsh-users/zsh-syntax-highlighting
-# antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
-# antigen bundle djui/alias-tips
-# antigen bundle MichaelAquilina/zsh-you-should-use
-# antigen bundle MichaelAquilina/zsh-auto-notify
+antigen bundle git
+antigen bundle heroku
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
+antigen bundle common-aliases
+antigen bundle compleat
+antigen bundle git-extras
+antigen bundle git-flow
+antigen bundle npm
+antigen bundle web-search
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+antigen bundle djui/alias-tips
+antigen bundle MichaelAquilina/zsh-you-should-use
+antigen bundle MichaelAquilina/zsh-auto-notify
 
 # NVM bundle
-# export NVM_LAZY_LOAD=true
-# antigen bundle lukechilds/zsh-nvm
-# antigen bundle Sparragus/zsh-auto-nvm-use
+export NVM_LAZY_LOAD=true
+antigen bundle lukechilds/zsh-nvm
+antigen bundle Sparragus/zsh-auto-nvm-use
 
 # Tell Antigen that you're done
 antigen apply
@@ -117,7 +112,6 @@ alias gb='git branch'
 alias gi='git init'
 alias gcl='git clone'
 
-
 # Shell Integration
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
@@ -133,8 +127,6 @@ fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
-# export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/Users/falconechelon/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/Users/falconechelon/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"

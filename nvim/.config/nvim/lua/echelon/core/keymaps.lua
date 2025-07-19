@@ -1,6 +1,8 @@
 -- Local keymaps
 local keymap = vim.keymap
 
+
+
 -- Clear highlights on search
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear Search Highlight' })
 
@@ -45,3 +47,4 @@ keymap.set('n', '<C-a>', '', { desc = "Select All Content" })
 
 -- Exit Insert Mode
 keymap.set('i', 'qw', '<Esc>', { desc = "[Q]uit [I]nsert [M]ode" })
+

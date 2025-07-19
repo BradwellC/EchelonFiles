@@ -7,22 +7,9 @@ return {
     -- call the setup function with properties to define how our lualine will look
     require("lualine").setup({
       options = {
-        -- Use web devicons if you have a nerdfont installed
         icons_enabled = true,
-        -- Set the theme to dracula, lualine documentation has other themes available as well
-        theme = "catppuccin",
-        -- disable the status line and winbar
-        disabled_filetypes = {
-          statusline = {},
-          winbar = {},
-        },
-        -- Don't focus lualine on NvimTree
-        ignore_focus = { "NvimTree" },
-        -- Always divide lualine in the middle
-        always_divide_middle = true,
-        -- Global status
+        theme = "palenight",
         globalstatus = true,
-        -- Refresh every 1000 miliseconds
         refresh = {
           statusline = 1000,
           tabline = 1000,
@@ -39,7 +26,14 @@ return {
         -- display the filename in section c
         lualine_c = { "filename" },
         -- display the file encoding type, os, and filetype in section x
-        lualine_x = { "filetype" },
+        lualine_x = {
+          -- {
+          -- 	lazy_status.updates,
+          -- 	cond = lazy_status.has_updates,
+          -- 	color = { fg = "#ff9e64" },
+          -- },
+          { "filetype" },
+        },
         -- display where you are at in the file in section y
         lualine_y = { "progress" },
         -- display exact location of the cursor in section z

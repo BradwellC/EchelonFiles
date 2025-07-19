@@ -7,8 +7,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
@@ -30,6 +30,8 @@ opt.breakindent = true
 
 -- Save undo history
 opt.undofile = true
+opt.swapfile = false
+opt.backup = false
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 opt.ignorecase = true
@@ -75,3 +77,4 @@ opt.softtabstop = 2
 opt.termguicolors = true
 opt.conceallevel = 0
 opt.fileencoding = "utf-8"
+

@@ -1,5 +1,6 @@
 {
     "diagnostics.globals": [
-        "client_supports_method"
+        "client_supports_method",
+        "vim"
     ]
 }

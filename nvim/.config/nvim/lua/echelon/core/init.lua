@@ -1,2 +1,3 @@
-require("echelon.core.options")
-require("echelon.core.keymaps")
+require("Echelon.core.options")
+require("Echelon.core.keymaps")
+require("Echelon.core.autocmd")

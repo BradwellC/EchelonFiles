@@ -6,39 +6,46 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
 
-  opts = {
-    servers = {
-      lua_ls = {},
-      dockerls = {},
-      cssls = {},
-      ts_ls = {},
-      eslint = {},
-      pyright = {},
-      html = {},
-      intelephense = {},
-      gopls = {},
-      jsonls = {},
-      sqlls = {}
-    }
-  },
-
   config = function()
     local lspconfig = require("lspconfig")
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    lspconfig.lua_ls.setup({})
-    lspconfig.dockerls.setup({})
-    lspconfig.cssls.setup({})
-    lspconfig.ts_ls.setup({})
-    lspconfig.eslint.setup({})
-    lspconfig.pyright.setup({})
-    lspconfig.html.setup({})
-    lspconfig.intelephense.setup({})
-    lspconfig.gopls.setup({})
-    lspconfig.jsonls.setup({})
-    lspconfig.sqlls.setup({})
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities
+    })
+    lspconfig.dockerls.setup({
+      capabilities = capabilities
+    })
+    lspconfig.cssls.setup({
+      capabilities = capabilities
+    })
+    lspconfig.ts_ls.setup({
+      capabilities = capabilities
+    })
+    lspconfig.eslint.setup({
+      capabilities = capabilities
+    })
+    lspconfig.pyright.setup({
+      capabilities = capabilities
+    })
+    lspconfig.html.setup({
+      capabilities = capabilities
+    })
+    lspconfig.intelephense.setup({
+      capabilities = capabilities
+    })
+    lspconfig.gopls.setup({
+      capabilities = capabilities
+    })
+    lspconfig.jsonls.setup({
+      capabilities = capabilities
+    })
+    lspconfig.sqlls.setup({
+      capabilities = capabilities
+    })
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
