@@ -1,0 +1,86 @@
+
+version = 3
+final_space = true
+console_title_template = "{{.Folder}}"
+
+[palette]
+rosewater = "#dc8a78"
+flamingo = "#dd7878"
+pink = "#ea76cb"
+mauve = "#8839ef"
+red = "#d20f39"
+maroon = "#e64553"
+peach = "#fe640b"
+yellow = "#df8e1d"
+green = "#40a02b"
+teal = "#179299"
+sky = "#04a5e5"
+sapphire = "#209fb5"
+blue = "#1e66f5"
+lavender = "#7287fd"
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+  [[blocks.segments]]
+    style = "plain"
+    type = "text"
+    template = "\u256d\u2500"
+    foreground = "p:pink"
+    background = "transparent"
+
+  [[blocks.segments]]
+    style = "plain"
+    type = "os"
+    template = " {{.Icon}}{{if .WSL}} (WSL){{end}} ❯"
+    foreground = "p:flamingo"
+    background = "transparent"
+
+    [blocks.segments.properties]
+      windows = "\ue62a"
+      linux = "\uf17c"
+      ubuntu = "\uf31b"
+      macos = "\uf179"
+
+  [[blocks.segments]]
+    style = "plain"
+    type = "shell"
+    template = " \uf489 {{.Name}} ❯"
+    foreground = "p:red"
+    background = "transparent"
+
+
+  [[blocks.segments]]
+    type = "path"
+    style = "plain"
+    template = " {{ .Path }} ❯"
+    foreground = "p:rosewater" 
+    [blocks.segments.properties]
+      folder_icon = " \uf07b "
+      folder_separator_template = " \u00bb "
+      home_icon = "\ueb06 "
+
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+  [[blocks.segments]]
+    type = "text"
+    template = "\u2570\u2500"
+    style = "plain"
+    foreground = "p:pink"
+    background = "transparent"
+
+  [[blocks.segments]]
+    type = "git"
+    style = "plain"
+    foreground = "p:peach"
+    background = "transparent"
+    background_templates = [ "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}", "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}", "{{ if gt .Ahead 0 }}#B388FF{{ end }}", "{{ if gt .Behind 0 }}#B388FB{{ end }}" ]
+    template = "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}"
+
+

@@ -1,0 +1,10 @@
+window-padding-x = 5
+window-padding-y = 5
+
+theme = catppuccin-macchiato
+
+font-family = JetBrains Mono
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+
