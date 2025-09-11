@@ -19,6 +19,7 @@ sapphire = "#209fb5"
 blue = "#1e66f5"
 lavender = "#7287fd"
 
+
 [[blocks]]
 type = "prompt"
 alignment = "left"
@@ -45,23 +46,42 @@ newline = true
       macos = "\uf179"
 
   [[blocks.segments]]
-    style = "plain"
     type = "shell"
+    style = "plain"
     template = " \uf489 {{.Name}} ❯"
     foreground = "p:red"
     background = "transparent"
 
 
   [[blocks.segments]]
-    type = "path"
+    type = "session"
     style = "plain"
-    template = " {{ .Path }} ❯"
-    foreground = "p:rosewater" 
-    [blocks.segments.properties]
-      folder_icon = " \uf07b "
-      folder_separator_template = " \u00bb "
-      home_icon = "\ueb06 "
+    foreground = "p:sapphire"
+    background = "transparent"
+    template = " \uf2c0 {{.HostName}} ❯"
 
+[[blocks]]
+type = "prompt"
+alignment = "right"
+
+  [[blocks.segments]]
+    type = "git"
+    style = "plain"
+    background = "transparent"
+    foreground = "p:peach"
+    template = " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#ef5350> \uf046 {{ .Staging.String }}</>{{ end }} "
+    foreground_templates = [
+      "{{ if or (.Working.Changed) (.Staging.Changed) }}p:pink{{ end }}",
+      "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:maroon{{ end }}",
+      "{{ if gt .Ahead 0 }}p:red{{ end }}",
+      "{{ if gt .Behind 0 }}p:teal{{ end }}",
+    ]
+
+    [blocks.segments.properties]
+      branch_icon = " \ue725 "
+      fetch_status = true
+      fetch_upstream_icon = true
+      source = "cli"
 
 [[blocks]]
 type = "prompt"
@@ -69,18 +89,47 @@ alignment = "left"
 newline = true
 
   [[blocks.segments]]
+    style = "plain"
     type = "text"
     template = "\u2570\u2500"
-    style = "plain"
     foreground = "p:pink"
     background = "transparent"
 
   [[blocks.segments]]
-    type = "git"
+    type = "path"
     style = "plain"
-    foreground = "p:peach"
+    template = " [ {{.Path}} ]"
+    foreground = "p:flamingo" 
+    [blocks.segments.properties]
+      folder_icon = "\uf07b"
+      folder_separator_template = "<p:maroon> \u00bb </>"
+      home_icon = "\ueb06"
+      style = "agnoster"
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
+
+  [[blocks.segments]]
+    type = "status"
+    style = "plain"
+    template = "\u276f"
     background = "transparent"
-    background_templates = [ "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}", "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}", "{{ if gt .Ahead 0 }}#B388FF{{ end }}", "{{ if gt .Behind 0 }}#B388FB{{ end }}" ]
-    template = "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}"
+    foreground = "p:peach"
 
+      [blocks.segments.properties]
+        always_enabled = true
 
+[transient_prompt]
+foreground_templates = [
+  "{{if gt .Code 0}}#8aadf4{{end}}",
+  "{{if eq .Code 0}}#f5bde6{{end}}",
+]
+background = 'transparent'
+template = '❯❯ '
+
+[secondary_prompt]
+foreground = 'magenta'
+background = 'transparent'
+template = '❯❯ '
