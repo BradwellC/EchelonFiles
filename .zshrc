@@ -87,7 +87,7 @@ alias tree='eza --tree $eza_params'
 alias dotfiles='cd ~/CoreFiles'
 alias desktop='cd ~/Desktop'
 alias home='cd ~/'
-alias development='cd ~/Desktop/Echelon/Development'
+alias development='cd ~/Desktop/Development'
 alias config='cd ~/.config'
 alias freecode='~/Desktop/Development/freeCodeCamp/'
 
