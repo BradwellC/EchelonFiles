@@ -1,2 +1,2 @@
-require("Echelon.core")
-require("Echelon.lazy")
+require("samaritan.core")
+require("samaritan.lazy")

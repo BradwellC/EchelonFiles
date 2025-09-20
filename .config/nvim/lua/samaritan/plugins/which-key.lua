@@ -51,7 +51,7 @@ return {              -- Useful plugin to show you pending keybinds.
       { '<leader>l', group = '[L]int' },
       { '<leader>r', group = '[R]ename' },
       { '<leader>s', group = '[S]earch' },
-      { '<leader>t', group = '[T]oggle' },
+      { '<leader>t', group = '[T]abs' },
       { '<leader>w', group = '[W]orkspace' },
     },
   },

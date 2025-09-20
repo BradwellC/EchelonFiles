@@ -14,20 +14,15 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    { import = "Echelon.plugins" },
-    { import = "Echelon.plugins.lsp" }
-  },
-  checker = { 
-    enabled = true,
+    { import = "samaritan.plugins" },
   },
   change_detection = {
     notify = false
   },
-  defaults = {
-    lazy = false,
-    version = false, -- always use the latest git commit
+  checker = {
+    enabled = true,
+    notify = false,
   },
 })

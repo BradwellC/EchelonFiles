@@ -77,4 +77,3 @@ opt.softtabstop = 2
 opt.termguicolors = true
 opt.conceallevel = 0
 opt.fileencoding = "utf-8"
-
