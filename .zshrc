@@ -112,3 +112,4 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 
+alias vim='nvim'

@@ -104,7 +104,7 @@
 
 # Workspace B - Browser
 [[on-window-detected]]
-  if.app-id = 'org.mozilla.firefox'
+  if.app-id = 'com.microsoft.edgemac'
   run = 'move-node-to-workspace B'
 
 # Workspace C - Calendar

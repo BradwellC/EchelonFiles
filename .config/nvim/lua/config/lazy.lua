@@ -14,15 +14,22 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require('config.options')
+require('config.globals')
+require('config.keymaps')
+require('config.autocmds')
+
 require("lazy").setup({
   spec = {
-    { import = "samaritan.plugins" },
+    { import = "plugins" },
+    { import = "plugins.lsp" },
   },
-  change_detection = {
-    notify = false
+  defaults = {
+    lazy = false,
+    version = false, -- always use the latest git commit
   },
   checker = {
-    enabled = true,
-    notify = false,
-  },
+    enabled = true, -- check for plugin updates periodically
+    notify = false, -- notify on update
+  }, -- automatically check for plugin updates
 })

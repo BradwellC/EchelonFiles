@@ -1,2 +1,1 @@
-require("samaritan.core")
-require("samaritan.lazy")
+require('config.lazy')
