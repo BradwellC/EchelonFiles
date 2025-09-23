@@ -14,6 +14,11 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# Go Path Setup
+export GOPATH=$HOME/go
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
 # antigen path when using Homebrew:
 source $(brew --prefix)/share/antigen/antigen.zsh
 
@@ -90,6 +95,7 @@ alias home='cd ~/'
 alias development='cd ~/Desktop/Development'
 alias config='cd ~/.config'
 alias freecode='~/Desktop/Development/freeCodeCamp/'
+alias vim='nvim'
 
 alias gd='git diff'
 alias ga='git add'
@@ -100,6 +106,11 @@ alias gl='git log'
 alias gb='git branch'
 alias gi='git init'
 alias gcl='git clone'
+
+alias tn='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias ta='tmux attach-session'
+alias ts='tmux kill-server'
 
 # Shell Integration
 eval "$(fzf --zsh)"
@@ -112,4 +123,3 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 
-alias vim='nvim'

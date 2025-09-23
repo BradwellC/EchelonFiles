@@ -11,7 +11,18 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		vim.lsp.enable({ "lua_ls", "html", "cssls", "jsonls", "ts_ls", "pyright", "eslint", "emmet_ls", "jsonls" })
+		vim.lsp.enable({
+			"lua_ls",
+			"html",
+			"cssls",
+			"jsonls",
+			"ts_ls",
+			"pyright",
+			"eslint",
+			"emmet_ls",
+			"jsonls",
+			"gopls",
+		})
 
 		vim.diagnostic.config({
 			virtual_lines = true,
